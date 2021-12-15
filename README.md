@@ -18,7 +18,9 @@ Analysis of the algorithms
 2.Completion time:
 3.Communications
 cost depend on these three factors
-
+2core, 5thread total cost is - 0.01842 sec where vector size is 100
+2core, 10thread total cost is - 0.002008 sec where vector size is 100
+time is decreasing when we are increaisng number of threads.
 
 
 
