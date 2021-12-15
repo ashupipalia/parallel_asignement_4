@@ -48,6 +48,7 @@ int main(int argc, char **argv ) {
 	 int thread = atoi(argv[1]);
 	 char message[20];
 	 int i,rank, size, type=99;
+	 double t1,t2,d2;
 	 MPI_Status status;
 	 MPI_Init(&argc, &argv);
 	 MPI_Comm_size(MPI_COMM_WORLD,&size);
@@ -59,7 +60,11 @@ int main(int argc, char **argv ) {
 	 }
 	 else
 	 	MPI_Recv(message, 20, MPI_CHAR, 0, type, MPI_COMM_WORLD, &status);
+	 
+	 t1 = MPI_Wtime();
 	 openmp_fun(thread);
-	 printf( "Message from process =%d : %.13s\n", rank,message);
+	 t2 = MPI_Wtime();
+	 d2 = t2-t1;
+	 printf( "Message from process =%d : %.13s, %lf\n", rank,message,d2);
 	 MPI_Finalize();
 } 
